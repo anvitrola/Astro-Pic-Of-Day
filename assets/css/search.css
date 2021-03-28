@@ -1,0 +1,31 @@
+.cabecalho__search{
+    align-items: center;
+    color: var(--branco);
+    display: flex;
+    width: 62%;
+}
+.search__input{
+    border: none;
+    border-bottom: 1px solid var(--branco);
+    border-left: 1px solid var(--branco);
+    background: none;
+    color: var(--marrom);
+    height: 1em;
+    padding: .5rem;
+    width: 75%;
+}
+.search__button{
+    background-color: var(--vermelho);
+    border: none;
+    border-radius: 2px;
+    color: var(--branco);
+    font-weight: 700;
+    padding: .5rem;
+    text-transform: uppercase;
+    width: 22%;
+}
+@media screen and (min-width: 768px){
+    .cabecalho__search{
+        width: 30%;
+    }
+}

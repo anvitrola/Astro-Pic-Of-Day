@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apod Pic Of Day</title>
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/index/cabecalho.css">
+    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/index/main-title.css">
+    <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="stylesheet" href="assets/css/buttons.css">
+    <link rel="stylesheet" href="assets/css/rodape.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="container">
+            <img src="assets/imgs/logo.png" alt="" class="cabecalho__logo">
+            <div class="cabecalho__search">
+                <input type="date" class="search__input" id="input">
+                <button class="search__button" id="button">Go</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="main__titles">
+            <h1 class="main__title">
+                Astronomy Picture of The Day
+            </h1>
+        </div>
+        <section class="cards" id="cards">
+            <div class="container" id="cardsContainer">
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <h6 class="rodape__copyright">
+            by 
+            <a href="github.com/anvitrola" class="rodape__link">
+                anvitrola
+            </a>
+        </h6>
+    </footer>
+
+    <script src="script/controllers/NasaController.js"></script>
+    <script src="script/models/NasaModel.js"></script>
+    <script src="script/views/NasaView.js"></script>
+    <script src="script/helpers/goToDay.js"></script>
+    <script>
+        let $$ =document.getElementById.bind(document);
+        let $ = document.createElement.bind(document);
+        
+        let cards = $$('cards');
+        let cardsContainer = $$('cardContainer');
+        let input = $$('input');
+        let button = $$('button');
+
+        let buttons = $('div');
+        let next = $('button');
+        let previous = $('button');
+
+        buttons.classList.add('card__buttons');
+        next.classList.add('card__button--next');
+        previous.classList.add('card__button--previous');
+
+        next.setAttribute('id', 'nextButton');
+        previous.setAttribute('id', 'previousButton');
+        
+        next.textContent="Next Day";
+        previous.textContent="Previous Day";
+
+        let date = new Date();
+        let today = `${date.getFullYear()}-${(date.getMonth())+1}-${date.getDate()}`;
+        
+        window.addEventListener('load', () =>{
+            let controller = new NasaController(today);
+
+            button.addEventListener('click', ()=> {
+                new NasaController(input.value);
+            });
+
+            buttons.appendChild(previous);
+            buttons.appendChild(next);
+
+            next.addEventListener('click', (event)=>{
+                event.preventDefault();
+                let d = document.querySelector('.card__day').textContent;
+
+                let next = goToDay(d, '+')
+                new NasaController(next);
+            });
+
+            previous.addEventListener('click', (event)=>{
+                event.preventDefault();
+                let d = document.querySelector('.card__day').textContent;
+
+                let previous = goToDay(d, '-')
+                new NasaController(previous);
+            });
+        });
+        
+    </script>
+</body>
+</html>

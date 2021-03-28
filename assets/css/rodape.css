@@ -1,0 +1,11 @@
+.rodape{
+    align-items: center;
+    background-color: var(--azul);
+    display: flex;
+    height: 3em;
+    justify-content: center;
+}
+.rodape__link, .rodape__copyright{
+    color: var(--branco);
+    font-size: .9em;
+}

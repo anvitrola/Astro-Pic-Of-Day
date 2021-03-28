@@ -1,0 +1,26 @@
+.card__buttons{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    margin: 5% auto;
+    width: 100%;
+}
+
+.card__button--previous, .card__button--next{
+    background-color: var(--vermelho);
+    border: none;
+    border-radius: 30px;
+    color: var(--branco);
+    font-family: 'Source Code Pro', monospace;
+    padding: 1em;
+    width: 130px;
+}
+@media screen and (min-width: 768px){
+    .card__buttons{
+        align-self: flex-end;
+        flex-direction: column;
+        height: 10em;
+        justify-content: space-evenly;
+        width: 20%;
+    }
+}

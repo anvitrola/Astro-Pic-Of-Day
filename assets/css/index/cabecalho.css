@@ -1,0 +1,16 @@
+.cabecalho {
+    align-items: center;
+    background-color: var(--azul);
+    display: flex;
+    height: 4em;
+    justify-content: center;
+}
+.cabecalho .container{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+.cabecalho__logo{
+    width: 70px;
+}
